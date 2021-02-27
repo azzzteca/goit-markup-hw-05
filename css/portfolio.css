@@ -1,0 +1,106 @@
+/* Хедер */
+
+.page-header {
+  border-bottom: 1px solid #ECECEC;
+}
+  
+/* Фильтры наших работ - кнопки */
+  
+.filter-our-works {
+  padding-top: 71px;
+  padding-bottom: 94px;
+}
+  
+.container .filter-btn {
+    padding-left: 0;
+    padding-right: 0;
+  
+}
+  
+.filter-buttons.list {
+  display: flex;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 56px;
+  justify-content: center;
+  
+}
+  
+.btn-item + .btn-item {
+  margin-left: 8px;
+}
+  
+  
+.filter-buttons .btn {
+  min-width: 73px;
+  height: 38px;
+  padding: 6px 22px;
+  border-radius: 4px;
+  
+  background-color: var(--buttons-background, #ffffff);
+  font-family: inherit;
+  border: none;
+  color: var(--nav-text, #000000);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+}  
+  
+.filter-buttons .btn:hover,
+.filter-buttons .btn:focus {
+  background-color: var(--firm-color, blue);
+  color: #ffffff;
+}
+   
+/* Наши работы */
+  
+.projects.list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -30px;
+  margin-top: -30px;
+    
+  text-align: left;
+}
+  
+.project-card {
+  flex-basis: calc(100% / 3 - 30px);
+  margin-left: 30px;
+  margin-top: 30px;
+}
+  
+/* Тень при наведении на карточку товара */
+.project-card:hover, .project-card:focus {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.06);
+}
+  
+.projects.list .project {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 4px;
+}
+  
+.project-info {
+    margin-top: 0px;
+    margin-bottom: 0;
+}
+  
+.project-card .thumb {
+  padding: 20px 24px;
+  
+  border: 1px solid #EEEEEE;
+}
+  
+.projects .project {
+    color: var(--title-text);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 2.0;
+}
+  
+.projects .project-info {
+    color: var(--main-text);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.9;
+}
