@@ -6,6 +6,7 @@
   --firm-color: #2196F3;
   --buttons-background: #F5F4FA;
   --icons-color: #AFB1B8;
+  --cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1)
 }
 
 html {
@@ -73,7 +74,6 @@ img {
 .logo.header {
   padding: 24px 0 25px 0;
   margin-right: 93px;
-
 }
 
 .logo-web {
@@ -114,40 +114,47 @@ img {
   padding-bottom: 15px;
   
   color: var(--nav-text, black);
+  
   font-size: 14px;
   font-weight: 500;
   line-height: 1.2;
   text-decoration: none;
+
+  transition: color 250ms var(--cubic-bezier);
 }
 
 .site-nav .link:hover,
 .site-nav .link:focus {
   color: var(--firm-color, blue);
+  
 }
 
-.site-nav .link.current {
+.link.current {
   color: var(--firm-color, blue);
 }
 
 /* Cоздание эффекта подчеркивания ссылки */
-.header-links {
+.site-nav > .item {
   position: relative;
 }
 
-.header-links::after {
+.link.current::after {
   position: absolute;
-  display: inline-block;
   content: "";
+  display: block;
+
   width: 100%;
   height: 4px;
+
+  background-color: var(--firm-color);
   border-radius: 2px;
-  background-color: tomato;
-  opacity: 0;
+
+  left: 0;
+  bottom: 0;
+
+  transform: translateY(17px);
 }
 
-.header-links::after {
-  opacity: 1;
-}
 
 /* Контакты в шапке */
 .contacts.list {
@@ -170,16 +177,19 @@ img {
   font-weight: 500;
   line-height: 1.2;
   text-decoration: none;
+
+  transition-property: color 250ms var(--cubic-bezier);
 }
 
 .contact-link:hover, .contact-link:focus {
   color: var(--firm-color, blue);
-  fill: var(--firm-color);
 }
 
 .contact-link > .item {
   margin-right: 10px;
   fill: var(--main-text);
+
+  transition-property: fill 250ms var(--cubic-bezier);
 }
 
 .contact-link:hover .item, 
@@ -196,7 +206,10 @@ img {
   max-width: 1600px;
   height: 600px;
   background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
-  url(../images/hero.jpg);
+    url(../images/hero.jpg);
+  border: 1px;
+  border-color: #ECECEC;
+  
   background-repeat: no-repeat;
   background-size: auto;
   background-position: center;
@@ -227,6 +240,7 @@ img {
 
 .hero-btn {
   min-width: 200px;
+  border: 0;
   border-radius: 4px;
   padding: 10px 32px;
 
@@ -236,21 +250,28 @@ img {
   font-size: 16px;
   font-weight: 700;
   line-height: 1.9;
+
+  transition: color 250ms var(--cubic-bezier), background-color 250ms var(--cubic-bezier);
 }
 
-.hero .btn:hover,
-.hero .btn:focus {
+.hero-btn:hover,
+.hero-btn:focus {
   background-color: #ffffff;
   color: var(--firm-color, blue);
 }
 
+/* Модальное окно */
 .backdrop {
   position: fixed;
   top: 0;
   left: 0;
-  width: 1600px;
-  height: 1024px;
-  background-color: rgb(0, 128, 128, 0.8);
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.2);
+
+  opacity: 1;
+  transition: opacity 250ms var(--cubic-bezier);
+
 }
 
 .backdrop.is-hidden {
@@ -258,12 +279,14 @@ img {
   pointer-events: none;
 }
 
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, 50%) scale(0.9);
+}
 
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
 
   display: flex;
   justify-content: flex-end;
@@ -274,6 +297,8 @@ img {
   padding: 8px;
 
   background-color: #ffffff;
+
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .modal-close {
@@ -287,12 +312,9 @@ img {
   width: 30px;
   height: 30px;
 
-  /* border: 1px; а почему с этим не работает? */
   border-color: rgba(0, 0, 0, 0.1);
   border-radius: 50px;
-  background-color: #ffffff;
-
-  /* display: block; */
+  background-color: inherit;
 }
 
 /* Наши преимущества */
@@ -362,6 +384,8 @@ img {
 }
 
 .service-item {
+  position: relative;
+
   margin-left: 30px;
 }
 
@@ -373,6 +397,31 @@ img {
 .our-services {
   padding-bottom: 94px;
 }
+
+.service-item-info p {
+  margin: 0;
+}
+
+.service-item-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 370px;
+  height: 70px;
+
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+  padding: 27px 0;
+  text-align: center;
+
+  background-color: rgba(47, 48, 58, 0.8);
+}
+
 
 /* Наша команда */
 .our-team {
@@ -408,7 +457,6 @@ img {
   padding-bottom: 50px;
   margin-bottom: 0;
 }
-
 
 .team .member {
   margin-top: 0;
@@ -457,6 +505,8 @@ img {
 
   padding: 0;
   margin-left: 10px;
+
+  transition: background-color 250ms var(--cubic-bezier);
 } 
 
 .social-link:hover, 
@@ -466,6 +516,8 @@ img {
 
 .social-icon {
   fill: var(--icons-color);
+
+  transition: fill 250ms var(--cubic-bezier);
 }
 
 .social-link:hover .social-icon, 
@@ -501,8 +553,12 @@ img {
 
   border: 1px solid #AFB1B8;
   border-radius: 4px;
+}
 
+.client-svg {
   fill: var(--icons-color);
+
+  transition: fill 250ms var(--cubic-bezier);
 }
 
 .main-client:hover .client-svg, 
@@ -548,6 +604,8 @@ img {
 .address .tel {
   color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
+
+  transition: color 250ms var(--cubic-bezier);
 }
 
 .address .mail:hover,
@@ -601,8 +659,9 @@ img {
 
   border-radius: 50%;
 
-
   fill: #FFFFFF;
+
+  transition: background-color 250ms var(--cubic-bezier);
 }
 
 .footer-link:hover,
